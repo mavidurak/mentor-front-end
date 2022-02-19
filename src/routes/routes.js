@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: '/guest',
-    element: < PrivateOutlet/>,
+    element: < Outlet/>,
     children: [
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
