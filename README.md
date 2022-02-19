@@ -69,7 +69,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-### Structure Resources
-[https://javascript.plainenglish.io/how-i-structure-styled-components-9f139adc9032]
-[https://github.com/vinothwino/react-boilerplate]
-[https://github.com/withspectrum/spectrum]
+## Structure Resources
+
+Component Based Folder Structure
+
+https://javascript.plainenglish.io/how-i-structure-styled-components-9f139adc9032
+
+General Folder Structure
+
+https://github.com/vinothwino/react-boilerplate
+https://github.com/withspectrum/spectrum
+
+Route
+
+https://www.ryanjyost.com/react-routing/
