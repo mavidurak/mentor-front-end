@@ -6,7 +6,8 @@ import {
   DatasetList,
   DatasetAddUpdate,
   Login,
-  Register
+  Register,
+  Profile
 } from "../screens/index"
 import PrivateMainLayout from '../layouts/PrivateMainLayout';
 
@@ -16,6 +17,7 @@ const routes = [
     element: <PrivateMainLayout/>,
     children: [
       { path: '/dashboard', element: <Dashboard /> },
+      { path: '/profile', element: <Profile /> },
       { path: '/', element: <Navigate to="/dashboard" /> },
       {
         path: 'application',

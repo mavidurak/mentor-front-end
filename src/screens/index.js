@@ -6,4 +6,5 @@ export {default as DatasetList} from "./Dataset/DatasetList"
 export {default as DatasetAddUpdate} from "./Dataset/DatasetAddUpdate"
 export {default as Login} from "./Guest/Login"
 export {default as Register} from "./Guest/Register"
+export {default as Profile} from "./Profile/Profile"
 
