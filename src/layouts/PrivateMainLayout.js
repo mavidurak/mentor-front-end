@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
-import SecuredLayout from "../layouts/SecuredLayout";
+import MainLayout from "./MainLayout";
 
 const PrivateOutlet = (...rest) => {
-  const auth = false
+  const auth = true;
   return (auth ?
-    <SecuredLayout rest>
+    <MainLayout>
       <Outlet />
-    </SecuredLayout>
+    </MainLayout>
     : <Navigate to="/guest/login" />
   )
 }

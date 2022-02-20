@@ -80,6 +80,3 @@ General Folder Structure
 https://github.com/vinothwino/react-boilerplate
 https://github.com/withspectrum/spectrum
 
-Route
-
-https://www.ryanjyost.com/react-routing/

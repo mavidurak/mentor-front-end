@@ -8,13 +8,12 @@ import {
   Login,
   Register
 } from "../screens/index"
-import PrivateOutlet from '../helpers/PrivateOutlet';
-import SecuredLayout from '../layouts/SecuredLayout';
+import PrivateMainLayout from '../layouts/PrivateMainLayout';
 
 const routes = [
   {
     path: '/',
-    element: <PrivateOutlet/>,
+    element: <PrivateMainLayout/>,
     children: [
       { path: '/dashboard', element: <Dashboard /> },
       { path: '/', element: <Navigate to="/dashboard" /> },
