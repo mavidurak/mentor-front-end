@@ -16,7 +16,6 @@ axios.interceptors.request.use(function (config) {
 
 axios.interceptors.response.use(function (response) {
 
-  console.log(response.data)
   toast.update(toastId, {
     render: "Generic Success Message",
     type: "success",
@@ -27,7 +26,6 @@ axios.interceptors.response.use(function (response) {
 
 }, function (error) {
 
-  console.log(error.response?.data)
   toast.update(toastId, {
     render: "Generic Error Message",
     type: "error",

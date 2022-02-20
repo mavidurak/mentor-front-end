@@ -15,11 +15,8 @@ const RegisterForm = () => {
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
   const login = (data) =>{
-    console.log(data)
     axios.post('/authentications/register/',data).then(res=>{
-      console.log(res.data)
-    }).catch(err=>{
-      console.log(err.response.data)
+
     })
   }
   console.log()

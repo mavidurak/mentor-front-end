@@ -15,10 +15,7 @@ const LoginForm = () => {
 
   const login = (data) =>{
     axios.post('/authentications/login/',data).then(res=>{
-      console.log(res)
       localStorage.setItem("X-AccessToken",res.data.token.token_value)
-    }).catch(err=>{
-      
     })
   }
 
