@@ -10,3 +10,4 @@ export * from "./Link";
 export * from "./Paragraph";
 export * from "./Typography";
 export * from "./DemoElement"
+export * from "./Form"

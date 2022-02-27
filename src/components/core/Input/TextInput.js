@@ -45,7 +45,7 @@ const ErrorMessage = styled.p`
 const Input = styled.input`
   display: flex;
   padding: 12px;
-  background-color: whitesmoke;
+  background-color: white;
   border: 4px;
   border-color: gray;
   border-radius: 5px;

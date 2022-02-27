@@ -2,11 +2,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import useYupValidationResolver from "../../utils/useYupValidationResolver";
-import { toast } from "react-toastify";
 import TextInput from "../core/Input/TextInput";
-import styled from "styled-components";
-import { TitleWrapper,Button } from "../../molecules"
-import { Box, Flex} from "../../elements";
+import { TitleWrapper, Button } from "../../molecules"
+import { Box, Flex, Form } from "../../elements";
+import { useContext } from "react";
+import {UserContext}from "../../helpers/UserProvider";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object({
   username: yup.string().required().min(3).max(30),
@@ -15,6 +16,9 @@ const validationSchema = yup.object({
 
 const LoginForm = () => {
 
+  let navigate = useNavigate();
+
+  const {setLoggedIn} = useContext(UserContext)
 
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
@@ -22,14 +26,16 @@ const LoginForm = () => {
   const login = (data) => {
     axios.post('/authentications/login/', data).then(res => {
       localStorage.setItem("X-AccessToken", res.data.token.token_value)
+      setLoggedIn(true)
+      navigate('/')
     })
   }
   return (
     <Box >
       <Flex>
-      <TitleWrapper>
-      Login
-      </TitleWrapper>
+        <TitleWrapper>
+          Login
+        </TitleWrapper>
       </Flex>
       <Form onSubmit={handleSubmit(data => login(data))}>
         <TextInput
@@ -43,15 +49,10 @@ const LoginForm = () => {
           errorMessage={errors.password?.message}
           type="password"
         />
-        <Button type="submit" color='custom' variant='secondary' size='large'>Submit</Button>
+        <Button type="submit" variant='secondary' mt='2' size='medium'>Login</Button>
       </Form>
     </Box>
   );
 }
 
 export default LoginForm
-
-
-const Form = styled.form`
-
-`;

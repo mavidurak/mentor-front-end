@@ -2,6 +2,9 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import useYupValidationResolver from "../../utils/useYupValidationResolver";
+import TextInput from "../core/Input/TextInput";
+import { TitleWrapper, Button } from "../../molecules"
+import { Box, Flex, Form } from "../../elements";
 
 const validationSchema = yup.object({
   username: yup.string().required().min(3).max(30),
@@ -14,24 +17,45 @@ const RegisterForm = () => {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  const login = (data) =>{
-    axios.post('/authentications/register/',data).then(res=>{
+  const login = (data) => {
+    axios.post('/authentications/register/', data).then(res => {
 
     })
   }
-  console.log()
+
   return (
-    <form onSubmit={handleSubmit(data => login(data))}>
-      <input {...register("username")} />
-      <p>{errors.username?.message}</p>
-      <input {...register("password")} />
-      <p>{errors.password?.message}</p>
-      <input {...register("name")} />
-      <p>{errors.name?.message}</p>
-      <input {...register("email")} />
-      <p>{errors.email?.message}</p>
-      <input type="submit" />
-    </form>
+    <Box >
+      <Flex>
+        <TitleWrapper>
+          Register
+        </TitleWrapper>
+      </Flex>
+      <Form onSubmit={handleSubmit(data => login(data))}>
+        <TextInput
+          label={"Username"}
+          {...register("username")}
+          errorMessage={errors.username?.message}
+        />
+        <TextInput
+          label={"Password"}
+          {...register("password")}
+          errorMessage={errors.password?.message}
+          type="password"
+        />
+        <TextInput
+          label={"Name"}
+          {...register("Name")}
+          errorMessage={errors.name?.message}
+        />
+        <TextInput
+          label={"email"}
+          {...register("email")}
+          errorMessage={errors.email?.message}
+          type="email"
+        />
+        <Button type="submit" variant='secondary' mt='2' size='medium'>Register</Button>
+      </Form>
+    </Box>
   );
 }
 

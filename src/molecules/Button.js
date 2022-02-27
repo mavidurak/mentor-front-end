@@ -4,26 +4,22 @@ import { color, space, fontSize, buttonStyle, variant } from 'styled-system'
 
 const buttonSize = variant({
   prop: 'size',
-  key: 'buttonSizes'
+  scale: 'buttonSizes'
 })
 
 export const Button = styled.button`
-   border: 0;
-   outline: 0;
-   font-size: 18px;
-    padding: 9px 20px;
-    border-radius: 5px;
-   ${color}
-   ${space}
-   ${fontSize}
-   ${buttonStyle}
-   &:hover{
-     cursor: pointer;
-   }
-   &:active{
-     background-color: limegreen;
-   }
- `
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  ${color}
+  ${space}
+  ${fontSize}
+  ${buttonStyle}
+  ${buttonSize}
+  &:hover{
+    cursor: pointer;
+  }
+`
 Button.defaultProps = {
   variant: 'primary',
   backgroundColor: 'blue',
