@@ -13,9 +13,6 @@ const UserProvider = ({children}) => {
   let navigate = useNavigate();
 
   useEffect(() => {
-  }, [user])
-
-  useEffect(() => {
     if(loggedIn){
       updateUserInfo()
     }else{
