@@ -1,3 +1,5 @@
+import { maxWidth } from "styled-system";
+
 const breakpoints = ["288px", "608px", "1024px", "1504px"];
 
 // breakpoints.xs = breakpoints[0];
@@ -56,15 +58,18 @@ const buttons= {
 const buttonSizes= {
   small: {
     fontSize: '15px',
-    padding: `7px 15px`
+    padding: `7px 15px`,
+    maxWidth: '60px'
   },
   medium: {
     fontSize: '18px',
-    padding: `9px 20px`
+    padding: `9px 20px`,
+    maxWidth: '100px'
   },
   large: {
     fontSize: '22px',
-    padding: `15px 30px`
+    padding: `15px 30px`,
+    maxWidth: '160px'
   }
 }
 
