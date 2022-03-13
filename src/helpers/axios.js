@@ -3,10 +3,9 @@ import { toast } from "react-toastify"
 
 axios.defaults.baseURL = process.env.REACT_APP_REQUEST_BASE_URL
 
-let toastId;
 axios.interceptors.request.use(function (config) {
 
-  toastId = toast.loading("Please wait...")
+  config.requestToastId = toast.loading("Please wait...")
   config.headers.common['X-AccessToken'] = localStorage.getItem("X-AccessToken") ? localStorage.getItem("X-AccessToken") : "notoken"
   return config;
 
@@ -17,9 +16,9 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
 
   if (response.config.method === "get") {
-    toast.dismiss(toastId)
+    toast.dismiss(response.config.requestToastId)
   }else {
-    toast.update(toastId, {
+    toast.update(response.config.requestToastId, {
       render: "Generic Success Message",
       type: "success",
       isLoading: false,
@@ -31,7 +30,7 @@ axios.interceptors.response.use(function (response) {
 
 }, function (error) {
 
-  toast.update(toastId, {
+  toast.update(error.config.requestToastId, {
     render: "Generic Error Message",
     type: "error",
     isLoading: false,

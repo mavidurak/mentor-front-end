@@ -9,7 +9,7 @@ export const Container = styled(Box)`
 Container.defaultProps = {
   minWidth: 288,
   maxWidth: 1440,
-  my: 0,
-  mx: 3
+  py: 2,
+  px: 4
 
 };
