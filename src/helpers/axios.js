@@ -16,12 +16,17 @@ axios.interceptors.request.use(function (config) {
 
 axios.interceptors.response.use(function (response) {
 
-  toast.update(toastId, {
-    render: "Generic Success Message",
-    type: "success",
-    isLoading: false,
-    autoClose: 5000,
-  });
+  if (response.config.method === "get") {
+    toast.dismiss(toastId)
+  }else {
+    toast.update(toastId, {
+      render: "Generic Success Message",
+      type: "success",
+      isLoading: false,
+      autoClose: 5000,
+    });
+  }
+
   return response;
 
 }, function (error) {

@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import MainLayout from "./MainLayout";
+import MainLayout from "./MainLayout/MainLayout";
 
 const PrivateOutlet = (...rest) => {
-  const auth = true;
+  const auth = localStorage.getItem("X-AccessToken");
   return (auth ?
     <MainLayout>
       <Outlet />

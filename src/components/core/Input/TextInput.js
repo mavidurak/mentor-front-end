@@ -24,32 +24,35 @@ const TextInput = forwardRef(({ defaultValue, label, name, placeholder, type, on
 export default TextInput
 
 const InputWrapper = styled.div`
-  padding: 1em;
+  padding-block: 1em;
   display: block;
 `;
 
 const Label = styled.label`
   padding: 5px;
   display: block;
+  color: ${props => props.theme.colors.text600};
 `;
 
 const ErrorMessage = styled.p`
   padding: 1px;
   display: block;
-  color: red;
+  color: ${props => props.theme.colors.error};
   margin: auto;
   font-size: small;
 `;
 
 const Input = styled.input`
-  padding: 16px;
-  background-color: whitesmoke;
+  display: flex;
+  padding: 12px;
+  background-color: white;
   border: 4px;
   border-color: gray;
   border-radius: 5px;
-  width: max-content;
+  border: ${props => props.theme.borders};
   font-size: medium;
-  width: 20em;
+  width: 100%;
+  box-sizing: border-box;
   &:focus {
         outline: none;
         box-shadow: 0px 0px 2px gray;
