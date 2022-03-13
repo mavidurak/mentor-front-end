@@ -2,7 +2,7 @@ import SelectMultiple from 'react-select'
 import { Controller } from 'react-hook-form'
 import { InputWrapper, Label, ErrorMessage } from './common'
 
-const Multiselect = ({ label, name, options,defaultValue, control, multi }) => {
+const Multiselect = ({ label, name, options,errorMessage, control, multi }) => {
 
   return (
     <InputWrapper>
@@ -40,6 +40,7 @@ const Multiselect = ({ label, name, options,defaultValue, control, multi }) => {
             />
         }}
       />
+      <ErrorMessage className="error-message">{errorMessage}</ErrorMessage>
     </InputWrapper>
   )
 }

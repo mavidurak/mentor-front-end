@@ -65,6 +65,7 @@ const DatasetAddUpdateForm = ({ data, datasetId }) => {
             label={"Key Title"}
             control={control}
             options={Object.values(DataTypes).map(dataType => ({ value: dataType, label: dataType }))}
+            errorMessage={errors.data_type?.message}
           />
           <TextInput
             label={"Description"}
