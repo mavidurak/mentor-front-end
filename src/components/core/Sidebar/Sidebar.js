@@ -4,6 +4,7 @@ import {
   SLink,
   SLinkContainer,
   SLinkIcon,
+  SLinkAddLinkIcon,
   SLinkLabel,
   SLinkNotification,
   SLogo,
@@ -28,6 +29,7 @@ import {
 } from "react-icons/ai";
 import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
+import { RiAddCircleLine } from "react-icons/ri"
 
 import { ThemeContext } from "../../../App";
 import { useLocation } from "react-router-dom";
@@ -71,7 +73,7 @@ const Sidebar = () => {
         />
       </SSearch>
       <SDivider />
-      {linksArray.map(({ icon, label, notification, to }) => (
+      {linksArray.map(({ icon, label, notification, to, iconAdd,toAdd }) => (
         <SLinkContainer key={label} isActive={pathname === to}>
           <SLink to={to} style={!sidebarOpen ? { width: `fit-content` } : {}}>
             <SLinkIcon>{icon}</SLinkIcon>
@@ -84,6 +86,7 @@ const Sidebar = () => {
                 )}
               </>
             )}
+            {toAdd&&<SLinkAddLinkIcon to={toAdd}>{iconAdd}</SLinkAddLinkIcon>}
           </SLink>
         </SLinkContainer>
       ))}
@@ -122,12 +125,16 @@ const linksArray = [
     icon: <AiOutlineApartment />,
     to: "/application",
     notification: 0,
+    toAdd:"/application/add-update",
+    iconAdd:<RiAddCircleLine/>
   },
   {
     label: "Dataset",
     icon: <AiOutlineApartment />,
     to: "/dataset",
     notification: 0,
+    toAdd:"/dataset/add-update",
+    iconAdd:<RiAddCircleLine/>
   },
   {
     label: "Profile",
