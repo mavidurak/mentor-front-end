@@ -7,7 +7,7 @@ import { TitleWrapper, Button } from "../../molecules"
 import { Flex, Form, Grid, Container } from "../../elements";
 import Multiselect from "../core/Input/Multiselect";
 import DataTypes from "../../constants/DataTypes";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 const validationAddSchema = yup.object({
   title: yup.string().required().min(2).max(40),
