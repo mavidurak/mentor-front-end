@@ -1,7 +1,7 @@
 
 export {default as Dashboard} from "./Dashboard/Dashboard"
-export {default as ApplicationList} from "./Application/ApplicationList"
-export {default as ApplicationAddUpdate} from "./Application/ApplicationAddUpdate"
+export {default as ApplicationListScreen} from "./Application/ApplicationListScreen"
+export {default as ApplicationAddUpdateScreen} from "./Application/ApplicationAddUpdateScreen"
 export {default as DatasetListScreen} from "./Dataset/DatasetListScreen"
 export {default as DatasetAddUpdateScreen} from "./Dataset/DatasetAddUpdateScreen"
 export {default as Login} from "./Guest/Login"

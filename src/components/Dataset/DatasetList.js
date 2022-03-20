@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../../molecules"
 import { RiDeleteBin5Line, RiEditFill } from "react-icons/ri";
 import styled from "styled-components";
-import { Flex, FlexItem, Grid } from "../../elements";
+import { Grid } from "../../elements";
 
 
 const DatasetList = () => {

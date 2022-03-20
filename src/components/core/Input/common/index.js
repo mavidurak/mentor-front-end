@@ -9,6 +9,7 @@ export const Label = styled.label`
   padding: 5px;
   display: block;
   color: ${props => props.theme.colors.text600};
+  text-align : ${props => props.checkbox ? "center":"start"};
 `;
 
 export const ErrorMessage = styled.p`
