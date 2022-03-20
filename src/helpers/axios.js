@@ -19,7 +19,7 @@ axios.interceptors.response.use(function (response) {
     toast.dismiss(response.config.requestToastId)
   } else {
     toast.update(response.config.requestToastId, {
-      render: response.data.message,
+      render: response.data?.message,
       type: "success",
       isLoading: false,
       autoClose: 5000,
