@@ -19,7 +19,7 @@ axios.interceptors.response.use(function (response) {
     toast.dismiss(response.config.requestToastId)
   }else {
     toast.update(response.config.requestToastId, {
-      render: "Generic Success Message",
+      render: response.data.message,
       type: "success",
       isLoading: false,
       autoClose: 5000,
@@ -29,7 +29,8 @@ axios.interceptors.response.use(function (response) {
   return response;
 
 }, function (error) {
-
+  //Usefull for development stage
+  console.log(error.response.data)
   toast.update(error.config.requestToastId, {
     render: "Generic Error Message",
     type: "error",

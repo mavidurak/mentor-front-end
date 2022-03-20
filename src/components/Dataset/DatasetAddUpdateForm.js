@@ -8,16 +8,24 @@ import { Flex, Form, Grid, Container } from "../../elements";
 import Multiselect from "../core/Input/Multiselect";
 import DataTypes from "../../constants/DataTypes";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const validationAddSchema = yup.object({
-  title: yup.string().required().min(2).max(40),
-  data_type: yup.string().required().min(1).max(30),
-  description: yup.string()
-});
 
 const DatasetAddUpdateForm = ({ data, datasetId }) => {
 
-  const resolver = useYupValidationResolver(validationAddSchema);
+  const navigate = useNavigate();
+
+  const validationSchema = yup.object({
+    title: datasetId
+      ? yup.string().min(2).max(40)
+      : yup.string().min(2).max(40).required(),
+    data_type: datasetId
+      ? yup.string().min(1).max(30)
+      : yup.string().min(2).max(40).required(),
+    description: yup.string()
+  });
+
+  const resolver = useYupValidationResolver(validationSchema);
   const {
     handleSubmit,
     register,
@@ -34,7 +42,9 @@ const DatasetAddUpdateForm = ({ data, datasetId }) => {
   }
 
   const update = ({ datasetId, data }) => {
-    axios.put(`/data-sets/${datasetId}`, data)
+    axios.put(`/data-sets/${datasetId}`, data).then(()=>{
+      navigate("/dataset")
+    })
   }
 
   const submit = (data) => {

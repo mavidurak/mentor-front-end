@@ -1,8 +1,8 @@
 import { Navigate,Outlet } from 'react-router-dom';
 import {
   Dashboard,
-  ApplicationList,
-  ApplicationAddUpdate,
+  ApplicationListScreen,
+  ApplicationAddUpdateScreen,
   DatasetListScreen,
   DatasetAddUpdateScreen,
   Login,
@@ -23,8 +23,9 @@ const routes = [
         path: 'application',
         element: <Outlet />,
         children: [
-          { path: '', element: <ApplicationList/> },
-          { path: 'add-update', element: <ApplicationAddUpdate/> },
+          { path: '', element: <ApplicationListScreen/> },
+          { path: 'add-update', element: <ApplicationAddUpdateScreen/> },
+          { path: ':applicationId/add-update', element: <ApplicationAddUpdateScreen/> },
         ],
       },
       {
