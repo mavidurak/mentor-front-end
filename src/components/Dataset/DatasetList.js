@@ -52,7 +52,7 @@ const DatasetList = () => {
             <SLink to={`${row.original.id}/add-update`} >
               <RiEditFill/>
             </SLink>
-            <Button size="small" variant="secondary" backgroundColor="red">
+            <Button size="small" variant="secondary" backgroundColor="red" onClick={()=>deleteDataset(row.original.id)}>
               <RiDeleteBin5Line/>
             </Button>
           </Grid>
@@ -65,6 +65,11 @@ const DatasetList = () => {
   )
 
   //const data = useMemo(() => makeData(100000), [])
+  const deleteDataset = (id) => {
+    axios.delete('data-sets/'+id).then(
+      ()=>getDatasets()
+    )
+  } 
 
   const getDatasets = () => {
     axios.get('data-sets/').then(res => {

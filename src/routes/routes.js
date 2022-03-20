@@ -4,7 +4,7 @@ import {
   ApplicationList,
   ApplicationAddUpdate,
   DatasetListScreen,
-  DatasetAddUpdate,
+  DatasetAddUpdateScreen,
   Login,
   Register,
   Profile
@@ -32,8 +32,8 @@ const routes = [
         element: <Outlet />,
         children: [
           { path: '', element: <DatasetListScreen/> },
-          { path: 'add-update', element: <DatasetAddUpdate/> },
-          { path: ':datasetId/add-update', element: <DatasetAddUpdate/> },
+          { path: 'add-update', element: <DatasetAddUpdateScreen/> },
+          { path: ':datasetId/add-update', element: <DatasetAddUpdateScreen/> },
         ],
       },
     ],

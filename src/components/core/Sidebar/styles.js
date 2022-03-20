@@ -99,6 +99,21 @@ export const SLinkIcon = styled.div`
     }
 `;
 
+export const SLinkAddLinkIcon = styled(Link)`
+    margin: ${v.smSpacing} ${v.mdSpacing};
+    display: flex;
+    text-decoration: none;
+    position: absolute;
+    right: 0;
+    color: green;
+    &:hover{
+      color: limegreen;
+    };
+    svg {
+        font-size: 16px;
+    }
+`;
+
 export const SLinkLabel = styled.span`
     display: block;
     flex: 1;
