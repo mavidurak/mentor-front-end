@@ -40,7 +40,6 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
     control } = useForm({ resolver, defaultValues: data });
 
   useEffect(() => {
-    console.log(data)
     reset(data)
   }, [data])
 
@@ -51,7 +50,9 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
   }, [])
 
   const add = (data) => {
-    axios.post('/applications/', data)
+    axios.post('/applications/', data).then(()=>{
+      navigate("/application")
+    })
   }
 
   const update = ({ applicationId, data }) => {
@@ -68,7 +69,6 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
   }
 
   const submit = (data) => {
-    console.log(data)
     if (applicationId) {
       update({ applicationId, data })
     } else {

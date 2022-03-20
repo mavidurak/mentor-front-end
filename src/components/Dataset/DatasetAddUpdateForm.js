@@ -38,7 +38,9 @@ const DatasetAddUpdateForm = ({ data, datasetId }) => {
   }, [data])
 
   const add = (data) => {
-    axios.post('/data-sets/', data)
+    axios.post('/data-sets/', data).then(()=>{
+      navigate("/dataset")
+    })
   }
 
   const update = ({ datasetId, data }) => {
