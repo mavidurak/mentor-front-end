@@ -34,8 +34,8 @@ const Multiselect = ({ label, name, options,errorMessage, control, multi }) => {
                 onChange(options.value)
               }
               onBlur={onBlur}
-              value={{value:value,label:value}}
-              defaultValue={{value:value,label:value}}
+              value={options.filter((option) => value===option.value)}
+              defaultValue={options.filter((option) => value===option.value)}
               
             />
         }}

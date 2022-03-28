@@ -32,14 +32,14 @@ const DatasetList = () => {
         accessor: 'data_type',
       },
       {
-        Header: 'Updated At',
+        Header: 'Created At',
         accessor: 'createdAt',
         Cell: ({ row }) => (
           new Date(row.original.createdAt).toLocaleDateString()
         ),
       },
       {
-        Header: 'Status',
+        Header: 'Updated At',
         accessor: 'updatedAt',
         Cell: ({ row }) => (
           new Date(row.original.updatedAt).toLocaleDateString()

@@ -1,8 +1,10 @@
-import { Navigate,Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import {
   Dashboard,
   ApplicationListScreen,
   ApplicationAddUpdateScreen,
+  ApplicationDatasetListScreen,
+  ApplicationDatasetAddScreen,
   DatasetListScreen,
   DatasetAddUpdateScreen,
   Login,
@@ -14,7 +16,7 @@ import PrivateMainLayout from '../layouts/PrivateMainLayout';
 const routes = [
   {
     path: '/',
-    element: <PrivateMainLayout/>,
+    element: <PrivateMainLayout />,
     children: [
       { path: '/dashboard', element: <Dashboard /> },
       { path: '/profile', element: <Profile /> },
@@ -23,25 +25,33 @@ const routes = [
         path: 'application',
         element: <Outlet />,
         children: [
-          { path: '', element: <ApplicationListScreen/> },
-          { path: 'add-update', element: <ApplicationAddUpdateScreen/> },
-          { path: ':applicationId/add-update', element: <ApplicationAddUpdateScreen/> },
+          { path: '', element: <ApplicationListScreen /> },
+          { path: 'add-update', element: <ApplicationAddUpdateScreen /> },
+          { path: ':applicationId/add-update', element: <ApplicationAddUpdateScreen /> },
+          {
+            path: ':applicationId/dataset',
+            element: <Outlet />,
+            children: [
+              { path: '', element: <ApplicationDatasetListScreen /> },
+              { path: 'add', element: <ApplicationDatasetAddScreen /> },
+            ],
+          }
         ],
       },
       {
         path: 'dataset',
         element: <Outlet />,
         children: [
-          { path: '', element: <DatasetListScreen/> },
-          { path: 'add-update', element: <DatasetAddUpdateScreen/> },
-          { path: ':datasetId/add-update', element: <DatasetAddUpdateScreen/> },
+          { path: '', element: <DatasetListScreen /> },
+          { path: 'add-update', element: <DatasetAddUpdateScreen /> },
+          { path: ':datasetId/add-update', element: <DatasetAddUpdateScreen /> },
         ],
       },
     ],
   },
   {
     path: '/guest',
-    element: < Outlet/>,
+    element: < Outlet />,
     children: [
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
@@ -50,7 +60,7 @@ const routes = [
   },
   {
     path: '*',
-    element:  <main>Not found</main>
+    element: <main>Not found</main>
 
   },
 ];
