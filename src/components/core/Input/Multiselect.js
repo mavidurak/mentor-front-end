@@ -2,7 +2,7 @@ import SelectMultiple from 'react-select'
 import { Controller } from 'react-hook-form'
 import { InputWrapper, Label, ErrorMessage } from './common'
 
-const Multiselect = ({ label, name, options,errorMessage, control, multi }) => {
+const Multiselect = ({ label, name, options,errorMessage, control,placeholder, multi }) => {
 
   return (
     <InputWrapper>
@@ -14,7 +14,7 @@ const Multiselect = ({ label, name, options,errorMessage, control, multi }) => {
           return multi ?
             <SelectMultiple
               options={options}
-              placeholder={"Choose..."}
+              placeholder={placeholder||"Choose..."}
               isMulti={true}
               onChange={(options) =>
                 onChange(options?.map((option) => option.value))
@@ -28,7 +28,7 @@ const Multiselect = ({ label, name, options,errorMessage, control, multi }) => {
             :
             <SelectMultiple
               options={options}
-              placeholder={"Choose..."}
+              placeholder={placeholder||"Choose..."}
               isMulti={false}
               onChange={(options) =>
                 onChange(options.value)

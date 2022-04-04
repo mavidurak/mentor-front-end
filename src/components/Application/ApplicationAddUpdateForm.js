@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import useYupValidationResolver from "../../utils/useYupValidationResolver";
 import TextInput from "../core/Input/TextInput";
@@ -9,6 +9,7 @@ import Multiselect from "../core/Input/Multiselect";
 import CheckboxInput from "../core/Input/CheckboxInput";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
+import MapView from "../core/Map";
 
 
 const ApplicationAddUpdateForm = ({ data, applicationId }) => {
@@ -22,13 +23,9 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
     permission_read: yup.bool().required(),
     permission_write: yup.bool().required(),
     permission_delete: yup.bool().required(),
-    longitude: !applicationId
-      ? yup.number().min(-180).max(180).required()
-      : null,
-    latitude: !applicationId
-      ? yup.number().min(-90).max(90).required()
-      : null,
   });
+
+  const [coords, setCoords] = useState([])
 
   const [datasetOptions, setDatasetOptions] = useState([])
   const resolver = useYupValidationResolver(validationSchema);
@@ -50,7 +47,17 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
   }, [])
 
   const add = (data) => {
-    axios.post('/applications/', data).then(()=>{
+    const coord = coords[0].toJSON()
+    axios.post('/applications/', {
+      title: data.title,
+      description: data.description,
+      dataset_ids: data.dataset_ids,
+      permission_read: data.permission_read,
+      permission_write: data.permission_write,
+      permission_delete: data.permission_delete,
+      longitude:coord.lng,
+      latitude:coord.lat
+    }).then(()=>{
       navigate("/application")
     })
   }
@@ -131,20 +138,13 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
         </Grid>
         <Grid gridColumn={2} mx={2} gridGap={1} >
           {!applicationId &&
-            <TextInput
-              label={"Longitude"}
-              {...register("longitude")}
-              type="number"
-              errorMessage={errors.longitude?.message}
-            />}
-          {!applicationId &&
-            <TextInput
-              label={"Latitude"}
-              {...register("latitude")}
-              type="number"
-              errorMessage={errors.latitude?.message}
-            />
-          }
+
+          
+            <MapView enableClick={1} markerChange={coords=>setCoords(coords)}/>
+          
+          
+        }
+
           <Button type="submit" variant='secondary' mt='2' size='medium'>
             {applicationId ? "Update" : "Add"}
           </Button>
