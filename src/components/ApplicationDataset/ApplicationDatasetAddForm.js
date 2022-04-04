@@ -30,7 +30,6 @@ const ApplicationDatasetAddForm = ({ applicationId }) => {
   useEffect(() => {
     axios.get('/application-datasets/unavaible-application-datasets/' + applicationId).then(res => {
       setDatasetOptions(res.data.results)
-      console.log(res.data.results)
     })
   }, [])
 

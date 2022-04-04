@@ -13,7 +13,6 @@ const ApplicationDatasetList = () => {
   const [data, setData] = useState([])
 
   const { applicationId } = useParams()
-  console.log(data)
 
   const columns = useMemo(
     () => [
@@ -66,7 +65,6 @@ const ApplicationDatasetList = () => {
 
   const getDatasets = () => {
     axios.get('/application-datasets/' + applicationId).then(res => {
-      console.log(res.data)
       setData(res.data.result)
     })
   }
