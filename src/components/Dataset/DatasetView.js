@@ -122,7 +122,7 @@ const DatasetView = ({ applicationDatasetOptions }) => {
 
       </Flex>
       {
-        chartSeries ?
+        chartSeries && chartSeries.length>0 ?
           <Box>
             <Chart
               options={chartOptions}
