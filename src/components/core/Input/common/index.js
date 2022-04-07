@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const InputWrapper = styled.div`
   padding-block: 1em;
   display: block;
+  flex-grow:1;
 `;
 
 export const Label = styled.label`

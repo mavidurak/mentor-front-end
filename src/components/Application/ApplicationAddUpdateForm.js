@@ -55,9 +55,9 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
       permission_read: data.permission_read,
       permission_write: data.permission_write,
       permission_delete: data.permission_delete,
-      longitude:coord.lng,
-      latitude:coord.lat
-    }).then(()=>{
+      longitude: coord.lng,
+      latitude: coord.lat
+    }).then(() => {
       navigate("/application")
     })
   }
@@ -70,7 +70,7 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
       permission_read: data.permission_read,
       permission_write: data.permission_write,
       permission_delete: data.permission_delete
-    }).then(()=>{
+    }).then(() => {
       navigate("/application")
     })
   }
@@ -138,13 +138,8 @@ const ApplicationAddUpdateForm = ({ data, applicationId }) => {
         </Grid>
         <Grid gridColumn={2} mx={2} gridGap={1} >
           {!applicationId &&
-
-          
-            <MapView enableClick={1} markerChange={coords=>setCoords(coords)}/>
-          
-          
-        }
-
+            <MapView enableClick={1} markerChange={coords => setCoords(coords)} />
+          }
           <Button type="submit" variant='secondary' mt='2' size='medium'>
             {applicationId ? "Update" : "Add"}
           </Button>
