@@ -88,6 +88,49 @@ export const darkTheme = {
   bg3: "rgb(50,50,50)",
   text: "rgb(210,210,210)",
   primary: "rgb(52, 131, 235)",
+  breakpoints,
+  colors,
+  modalSizes,
+  buttons,
+  buttonSizes,
+  space: [
+    0,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56,
+    64,
+    72,
+    80,
+    96,
+    120,
+    140,
+    180,
+    200,
+    300
+  ],
+  fontSizes: [12, 14, 16, 18, 20, 24, 32, 48, 56, 64, 72, 96, 120],
+  fontWeights: [200, 400, 700],
+  lineHeights: [
+    "20px",
+    "24px",
+    "28px",
+    "32px",
+    "40px",
+    "60px",
+    "72px",
+    "80px",
+    "100px",
+    "120px"
+  ],
+  fonts: {
+    default: "Neue Haas Display, Helvetica Neue, Helvetica, Arial, sans-serif"
+  },
+  borders: [0, `1px solid ${colors.text100}`],
+  radii: ["4px", "8px", "16px", "32px", "50%"]
 }
 
 
