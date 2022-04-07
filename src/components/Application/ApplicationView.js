@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Grid, Box, Typography } from "../../elements";
+import { Grid, Box, Flex, Typography } from "../../elements";
+import { TitleWrapper } from "../../molecules";
 import { useEffect, useState } from "react";
 import axios from "axios"
 import Multiselect from "../core/Input/Multiselect";
@@ -7,7 +8,7 @@ import { useForm } from "react-hook-form";
 import Chart from "react-apexcharts";
 import MapView from "../core/Map";
 
-const ApplicationView = () => {
+const ApplicationView = ({ setApplicationDatasetOptions }) => {
 
   const [options, setOptions] = useState([])
   const [data, setData] = useState()
@@ -42,11 +43,18 @@ const ApplicationView = () => {
     if (firstName)
       axios.get(`applications/with-dataset-options/${firstName}`).then(res => {
         setData(res.data.result)
+        if (setApplicationDatasetOptions)
+          setApplicationDatasetOptions(res.data.result.application_datasets)
       })
   }, [firstName])
 
   return (
     <Box>
+      <Flex>
+        <TitleWrapper>
+          Application View
+        </TitleWrapper>
+      </Flex>
       <Multiselect
         name={"applicationId"}
         control={control}
@@ -55,7 +63,7 @@ const ApplicationView = () => {
       />
       {
         data &&
-        <Grid justifyContent="center" alignItems="center" mx={2} gridGap={ [1, null, 2]} gridTemplateColumns={[
+        <Grid justifyContent="center" alignItems="center" mx={2} gridGap={[1, null, 2]} gridTemplateColumns={[
           "repeat(1, 1fr)",
           "repeat(1, 1fr)",
           "repeat(1, 1fr)",
@@ -111,7 +119,7 @@ const ApplicationView = () => {
               height="100%"/>*/}
             <MapView
               locations={Object.values(data.locations).map(location => ({ lng: location.longitude, lat: location.latitude }))}
-              centerLocation = {{lng:data.locations[0].longitude,lat:data.locations[0].latitude}}
+              centerLocation={{ lng: data.locations[0].longitude, lat: data.locations[0].latitude }}
             />
           </Box>
         </Grid>

@@ -53,7 +53,14 @@ const buttons= {
     '&:active':{
       backgroundColor: 'limegreen'
     }
-  }  
+  },
+  red: {
+    color: 'white',
+    backgroundColor: '#ff6666',
+    '&:active':{
+      backgroundColor: 'pink'
+    }
+  }
 };
 const buttonSizes= {
   small: {
@@ -64,7 +71,7 @@ const buttonSizes= {
   medium: {
     fontSize: '18px',
     padding: `9px 20px`,
-    maxWidth: '100px'
+    width: '120px'
   },
   large: {
     fontSize: '22px',
